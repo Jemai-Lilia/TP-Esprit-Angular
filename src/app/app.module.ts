@@ -7,18 +7,25 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
+import { FormsModule } from '@angular/forms';
+import { ContainsPipe } from './contains.pipe';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
   declarations: [
+    //liste des composants pipe et directives créer
     AppComponent,
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    ListCategoriesComponent
+    ListCategoriesComponent,
+    ContainsPipe,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
