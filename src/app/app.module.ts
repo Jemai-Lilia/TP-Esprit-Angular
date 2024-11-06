@@ -7,9 +7,16 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContainsPipe } from './contains.pipe';
 import { HighlightDirective } from './highlight.directive';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { TestComponent } from './test/test.component';
+import { ProductQPCategoryComponentComponent } from './product-qpcategory-component/product-qpcategory-component.component';
+import { ProductsCategoryComponentComponent } from './products-category-component/products-category-component.component';
+import { DetailsComponent } from './details/details.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { AddProductReactiveComponent } from './add-product-reactive/add-product-reactive.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +27,20 @@ import { HighlightDirective } from './highlight.directive';
     HomeComponent,
     ListCategoriesComponent,
     ContainsPipe,
-    HighlightDirective
+    HighlightDirective,
+    NotFoundComponent,
+    TestComponent,
+    ProductQPCategoryComponentComponent,
+    ProductsCategoryComponentComponent,
+    DetailsComponent,
+    AddProductComponent,
+    AddProductReactiveComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,//template driven form
+    ReactiveFormsModule //template reactive form
   ],
   providers: [],
   bootstrap: [AppComponent]

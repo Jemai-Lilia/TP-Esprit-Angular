@@ -1,0 +1,56 @@
+<div class="form-container">
+<form ngForm #f="ngForm"><!--on peut enlever ngForm lowla -->
+  <div class="form-group" >
+
+      <label for="name" >Name</label>
+       <input required minlength="5" pattern="[a-zA-Z]*" name="n" [(ngModel)]="p.name" #n="ngModel" /> <!--ajouter ngModel et l'exporter-->
+        <!--il faut ajouter l'attribut name pour pouvoir afficher les props louta-->
+      <div *ngIf="n.invalid">
+      <div *ngIf="n.errors['required']" >
+          Champs obligatoire
+      </div>
+
+        <div *ngIf="n.errors['minlength']">
+          Min {{ n.errors['minlength']['requiredLength'] }} caractères
+          alors que vous avez saisi {{ n.errors['minlength']['actualLength'] }}
+        </div>
+        <div *ngIf="n.errors['pattern']">
+          Nom doit contenir que des lettres
+        </div>
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="price">Price</label>
+      <input pattern="^\d+(\.\d+)?$" name="price" [(ngModel)]="p.price" #price="ngModel"/>
+      <div *ngIf="price.invalid">
+          QUE des chiffres
+        </div>
+  </div>
+  <div class="form-group">
+      <label for="category-id">Category Id</label>
+      <input required pattern="^\d+(\.\d+)?$" type="number" name="cat" [(ngModel)]="p.categoryId" #cat="ngModel"/>
+      <div *ngIf="cat.invalid">
+          obligatoire
+        </div>
+  </div>
+  <div class="form-group">
+      <label for="promotion">Promotion</label>
+      <input name="promo" pattern= "^(0|[1-9][0-9]?)$" [(ngModel)]="p.promotion" #promo="ngModel"/>
+      <div *ngIf="promo.invalid">
+          valeur <=100
+        </div>
+  </div>
+
+  <div class="form-group">
+      <label for="description">Description</label>
+     <textarea required name="description" [(ngModel)]="p.description" #description="ngModel"> </textarea>
+     <div *ngIf="description.invalid">
+      Champs obligatoire
+    </div>
+  </div>
+  <button [disabled]="f.invalid" type="submit" class="btn btn-primary" (click)="add(f.value)" >Submit</button>
+</form>
+</div>
+valid : {{n.valid}} ** invalid : {{n.invalid}} <br>
+touched : {{n.touched}} ** untouched : {{n.untouched}} <br>
+dirty : {{n.dirty}} ** pristine : {{n.pristine}} <br>

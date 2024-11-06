@@ -10,7 +10,12 @@
 
         <img (click)="clickImage(x.description)" [src]="x.image" [alt]="x.title" class="img-fluid h-50 w-75">
         <h3 appHighlight >{{x.title | uppercase}}</h3>
-        <button  class="btn btn-primary" *ngIf="x.available">Voir produits</button>
+        <!--<a routerLink="getdetails">details</a>---->
+        <!--<button [routerLink]="['/details',x.id]" class="btn btn-primary" *ngIf="x.available">Voir produits</button>-->
+        <button [routerLink]="['/details']" [queryParams]="{id:x.id}" class="btn btn-primary" *ngIf="x.available">Voir produits</button>
+
+        <a [routerLink]="['category',x.id]">Voir détails</a>
+        <a [routerLink]="['/products']" [queryParams]="{id:x.id}"><button class="btn btn-primary" *ngIf="x.available">Voir produits2</button></a>
         <span [hidden]="x.available">Catégorie non disponible</span>
         <!--<button  class="btn btn-primary" [hidden]="!x.available">Voir produits</button>-->
         <!--</ng-container>-->

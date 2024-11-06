@@ -1,0 +1,47 @@
+<form [formGroup]="myForm" class="form-container" (ngSubmit)="save()">
+  <div class="form-field">
+    <label for="name" class="label">Name:</label><br>
+    <input id="name" formControlName="name" class="input-field" placeholder="Enter your name"><br>
+    <div *ngIf="name.errors" class="error-message">
+      <div *ngIf="name.errors['required']">Name is required.</div>
+      <div *ngIf="name.errors['minlength']">Minimum 5 characters required.</div>
+      <div *ngIf="name.errors['pattern']">Name should only contain letters.</div>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="description" class="label">Description:</label><br>
+    <textarea id="description" formControlName="description" class="input-field" placeholder="Enter product description"></textarea><br>
+    <div *ngIf="description.errors" class="error-message">
+      <div *ngIf="description.errors['required']">Description is required.</div>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="price" class="label">Price:</label><br>
+    <input id="price" type="number" formControlName="price" class="input-field" placeholder="Enter price"><br>
+    <div *ngIf="price.errors" class="error-message">
+      <div *ngIf="price.errors['required']">Price is required.</div>
+      <div *ngIf="price.errors['pattern']">Price must be a valid number.</div>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="category" class="label">Category:</label><br>
+    <input id="category" formControlName="category" class="input-field" placeholder="Enter product category"><br>
+    <div *ngIf="category.errors" class="error-message">
+      <div *ngIf="category.errors['required']">Category is required.</div>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="promotion" class="label">Promotion:</label><br>
+    <input id="promotion" formControlName="promotion" class="input-field" placeholder="Enter promotion percentage"><br>
+    <div *ngIf="promotion.errors" class="error-message">
+      <div *ngIf="promotion.errors['required']">Promotion is required.</div>
+      <div *ngIf="promotion.errors['pattern']">Promotion must be a number between 0 and 100.</div>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="myForm.invalid" class="submit-button" >Save</button>
+</form>
